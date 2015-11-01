@@ -19,11 +19,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * Declaration of quantity variable
+     */
+    private int quantity = 0;
+
+    /**
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        display(2);
-        displayPrice(2 * 5);
+        displayPrice(quantity * 5);
+    }
+
+    /**
+     * This method is called when the + button is clicked.
+     */
+    public void increment(View view) {
+        display(++quantity);
+    }
+
+    /**
+     * This method is called when the - button is clicked.
+     */
+    public void decrement(View view) {
+        display(--quantity);
     }
 
     /**
