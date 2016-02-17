@@ -20,14 +20,13 @@ public class MainActivity extends AppCompatActivity {
      * Declaration of quantity variable
      */
     private int quantity = 0;
-    private int pricePerCup = 10;
 
     /**
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        String priceMessage = "Total: " + calculatePrice() + "€\nThank you!";
-        displayMessage(priceMessage);
+        int price = calculatePrice();
+        displayMessage(createOrderSummary(price));
     }
     /**
      * This method is called when the + button is clicked.
@@ -56,16 +55,26 @@ public class MainActivity extends AppCompatActivity {
      * This method displays the message.
      */
     private void displayMessage(String message) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(message);
+        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
+        orderSummaryTextView.setText(message);
     }
 
     /**
-     * this method calculate the price
+     * This method calculate the price
      *
      * @return the order's price
      */
     private int calculatePrice(){
-        return quantity * pricePerCup;
+        return quantity * 5;
+    }
+
+    /**
+     * This method creates the order summary String
+     *
+     * @param priceOfOrder the total price of the order
+     * @return the order summary
+     */
+    private String createOrderSummary(int priceOfOrder){
+        return "Name: Chtulhu\nQuantity: " + quantity + "\nTotal: " + priceOfOrder + "\nThank you!";
     }
 }
